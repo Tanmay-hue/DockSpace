@@ -43,11 +43,11 @@ docker network create --driver bridge --subnet 172.20.0.0/16 --ip-range 172.20.2
 ---
 
 ## 🚀 2. Running Containers in the Custom Network
-### Running **Redis Container** (`vidhi-database`)
+### Running **Redis Container** (`yash-database`)
 ```bash
 docker run -itd --net=vidhi-bridge --name=vidhi-database redis
 ```
-### Running **BusyBox Container** (`vidhi-server-A`)
+### Running **BusyBox Container** (`yash-server-A`)
 ```bash
 docker run -itd --net=vidhi-bridge --name=vidhi-server-A busybox
 ```
@@ -65,11 +65,11 @@ Expected Output:
 ---
 
 ## 📔 3. Testing Communication Between Containers
-### Ping from **vidhi-database** to **vidhi-server-A**
+### Ping from **vidhi-database** to **yash-server-A**
 ```bash
 docker exec -it vidhi-database ping 172.20.240.2
 ```
-### Ping from **vidhi-server-A** to **vidhi-database**
+### Ping from **vidhi-server-A** to **yash-database**
 ```bash
 docker exec -it vidhi-server-A ping 172.20.240.1
 ```
@@ -82,7 +82,7 @@ We add another container (`vidhi-server-B`) on the **default bridge network**.
 ```bash
 docker run -itd --name=vidhi-server-B busybox
 ```
-### 📌 Get IP of `vidhi-server-B`
+### 📌 Get IP of `yash-server-B`
 ```bash
 docker inspect -format='{{range .NetworkSettings.Networks}}{{.IPAddress}}{{end}}' vidhi-server-B
 ```
